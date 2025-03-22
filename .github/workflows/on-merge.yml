@@ -23,4 +23,4 @@ jobs:
           echo "PR Body: ${{ github.event.pull_request.body }}"
           echo "PR State: ${{ github.event.pull_request.state }}"
           echo "PR Merged: ${{ github.event.pull_request.merged }}"
-          echo "PR Labels: ${{ join(github.event.pull_request.labels.*.name, ', ') }}""
+          echo "PR Labels: ${{ join(github.event.pull_request.labels.*.name, ', ') }}"
