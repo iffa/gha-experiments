@@ -1,0 +1,26 @@
+name: DO on PR merge
+
+on:
+  pull_request:
+    types:
+      - closed
+
+jobs:
+  do-stuff-on-merge:
+    if: ${{ github.event.pull_request.head.repo.full_name == github.repository  && github.event.pull_request.merged && github.event.pull_request.base.ref == 'main' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Print Git & PR details
+        run: |
+          echo "Commit: ${{ github.sha }}"
+          echo "Branch: ${{ github.ref_name }}"
+          echo "PR Title: ${{ github.event.pull_request.title }}"
+          echo "PR Number: ${{ github.event.pull_request.number }}"
+          echo "PR Author: ${{ github.event.pull_request.user.login }}"
+          echo "PR Body: ${{ github.event.pull_request.body }}"
+          echo "PR State: ${{ github.event.pull_request.state }}"
+          echo "PR Merged: ${{ github.event.pull_request.merged }}"
+          echo "PR Labels: ${{ github.event.pull_request.labels }}""
